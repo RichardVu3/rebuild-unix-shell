@@ -3,15 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool add_job(job_t *jobs, int max_jobs, pid_t pid, job_state_t state, const char *cmd_line) {
-    int num_jobs = 0;
-    for (int i = 0; i < max_jobs; i++) {
-        if (jobs[i].cmd_line == NULL) {
-            break;
-        } else {
-            num_jobs++;
-        }
-    }
+bool add_job(job_t *jobs, int max_jobs, pid_t pid, job_state_t state, const char *cmd_line, int num_jobs) {
     if (num_jobs >= max_jobs) {
         return false;
     }

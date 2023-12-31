@@ -1,3 +1,0 @@
-cat file.txt     ;   ls    & cd ..      ;
-echo hello&ls&cd ..&
-echo hello;               ls

@@ -27,9 +27,11 @@ typedef struct job {
 *
 * cmd_line: the command line of the job.
 *
+* num_jobs: the index in the *jobs to add a new job
+*
 * Returns: if there are no more jobs left to allocate (i.e., max_jobs has been reached) then return false; otherwise, true to indicate the job was added.
 */
-bool add_job(job_t *jobs, int max_jobs, pid_t pid, job_state_t state, const char *cmd_line);
+bool add_job(job_t *jobs, int max_jobs, pid_t pid, job_state_t state, const char *cmd_line, int num_jobs);
 
 /*
 * delete_job: remove a job from the array of jobs based on the pid_t provided

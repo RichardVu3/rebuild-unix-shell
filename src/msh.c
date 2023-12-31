@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define _GNU_SOURCE
-#include <unistd.h> 
-
+#include <unistd.h>
 
 int main(int argc, char *argv[]) {
     // Initialize the shell state
@@ -46,7 +45,7 @@ int main(int argc, char *argv[]) {
         printf("usage: msh [-s NUMBER] [-j NUMBER] [-l NUMBER]\n");
         return 1;
     }
-    msh_t * shell = alloc_shell(j, l, s);
+    shell = alloc_shell(j, l, s);
 
     // The Shell MSH to interact with
     printf("msh> ");

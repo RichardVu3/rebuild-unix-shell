@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include "job.h"
+#include "history.h"
  
  // Represents the state of the shell
 typedef struct msh {
@@ -10,7 +11,11 @@ typedef struct msh {
    int max_jobs;
    int max_history;
    job_t * jobs; // represent an array jobs that are running in the shell.
+   history_t * history;
+   pid_t fg_pid;
 } msh_t;
+
+extern msh_t * shell;
 
 /*
 * alloc_shell: allocates and initializes the state of the shell
@@ -70,5 +75,23 @@ int evaluate(msh_t *shell, char *line);
 *
 */
 void exit_shell(msh_t *shell);
+
+/*
+* waitfg: waiting for the signal from the child process that runs the foreground job
+*
+* pid: the pid in which the foreground job is running
+*
+* Returns: nothing
+*/
+void waitfg(pid_t pid);
+
+/*
+* builtin_cmd: handle processing any built-in commands
+*
+* argv: the argv array
+*
+* Returns: char * as the command to execute, NULL otherwise
+*/
+char * builtin_cmd(char **argv);
 
 #endif 
